@@ -54,58 +54,86 @@
                     <input class="inp-style" type="date" name="">
                 </div>
             </div>
-            <div class="input-group f-class">
-                <div>
-                    <label for="">First Class ($150)</label>
-                    <input id="firstClassInput" class="inp-style inp-width" type="number" name="" value="0">
-                </div>
-                <div class="plus-minus-btn">
-                    <button onclick="ticketVariant('first', true)" class="button"><i class="fas fa-plus"></i></button>
-                    <button onclick="ticketVariant('first', false)" class="button"><i class="fas fa-minus"></i></button>
-                </div>
-            </div>
-
-            <div class="input-group f-class">
-                <div>
-                    <label for="">Economy ($100)</label>
-                    <input id="economyClassInput" class="inp-style inp-width" type="number" name="" value="0">
-                </div>
-                <div class="plus-minus-btn">
-                    <button onclick="ticketVariant('economy', true)" class="button"><i class="fas fa-plus"></i></button>
-                    <button onclick="ticketVariant('economy', false)" class="button"><i
-                            class="fas fa-minus"></i></button>
-                </div>
-            </div>
-            <div class="calculations">
-                <div class="amount">
-                    <div class="left">
-                        <p>Subtotal</p>
+            <form action="#">
+                <div class="input-group f-class">
+                    <div>
+                        <label for="">First Class ($150)</label>
+                        <input id="firstClassInput" class="inp-style inp-width" type="number" name="" value="0">
                     </div>
-                    <div class="right">
-                        <p id="subtotalAmount">$500</p>
+                    <div class="plus-minus-btn">
+                        <button onclick="ticketVariant('first', true)" class="button"><i
+                                class="fas fa-plus"></i></button>
+                        <button onclick="ticketVariant('first', false)" class="button"><i
+                                class="fas fa-minus"></i></button>
                     </div>
                 </div>
 
-                <div class="amount">
-                    <div class="left">
-                        <p>Charge 10% VAT</p>
+                <div class="input-group f-class">
+                    <div>
+                        <label for="">Economy ($100)</label>
+                        <input id="economyClassInput" class="inp-style inp-width" type="number" name="" value="0">
                     </div>
-                    <div class="right">
-                        <p id="vatAmount">$50</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="amount">
-                    <div class="left">
-                        <h4>Total</h4>
-                    </div>
-                    <div class="right">
-                        <p id="totalAmount">$550</p>
+                    <div class="plus-minus-btn">
+                        <button onclick="ticketVariant('economy', true)" class="button"><i
+                                class="fas fa-plus"></i></button>
+                        <button onclick="ticketVariant('economy', false)" class="button"><i
+                                class="fas fa-minus"></i></button>
                     </div>
                 </div>
-            </div>
-            <button class="btn-style" data-bs-toggle="modal" data-bs-target="#exampleModal">Book Now</button>
+                <div class="calculations">
+                    <div class="amount">
+                        <div class="left">
+                            <p>Subtotal</p>
+                        </div>
+                        <div class="right">
+                            <p id="subtotalAmount">$500</p>
+                        </div>
+                    </div>
+
+                    <div class="amount">
+                        <div class="left">
+                            <p>Charge 10% VAT</p>
+                        </div>
+                        <div class="right">
+                            <p id="vatAmount">$50</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="amount">
+                        <div class="left">
+                            <h4>Total</h4>
+                        </div>
+                        <div class="right">
+                            <p id="totalAmount">$550</p>
+                        </div>
+                    </div>
+                </div>
+                <button id="bookNow" class="btn-style" data-bs-toggle="modal" data-bs-target="#exampleModal">Book Now</button>
+
+                <!-- Popup Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-check-circle icon"></i> Congratulations! You have booked your ticket.</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Get ready for the fly. Wishing you all the best</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
         </div>
+
 
         <div class="booking-content">
             <h1>discover <br> around the world</h1>
@@ -114,26 +142,6 @@
                 voluptatibus quam</p>
         </div>
         </section>
-
-
-        <!-- Popup Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-check-circle icon"></i> Congratulations! You have successfully booked
-                            your ticket</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Wishing you good luck for your journey.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
         <!-- Bootstrap js cdn -->
@@ -184,6 +192,17 @@
             }
 
 
+
+            document.getElementById('bookNow').addEventListener('click', function () {
+                const ticketFirst = document.getElementById('firstClassInput').value;
+                const firstTicketCount = parseInt(ticketFirst);
+
+                const modal = document.getElementById('exampleModal');
+
+                if(firstTicketCount == 0){
+                    alert('You have book minimum 1 ticket to fly.');
+                }
+            })
         </script>
 
 
