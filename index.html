@@ -14,8 +14,6 @@
     <script src="https://kit.fontawesome.com/26e1075fc8.js" crossorigin="anonymous"></script>
 
     <!-- Stylesheet -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -36,13 +34,16 @@
     <main class="main-content container">
         <div class="booking-form">
             <h3>Booking Flights</h3>
-            <div class="input-group">
-                <label for="">Flying From</label>
-                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
-            </div>
-            <div class="input-group">
-                <label for="">Flying To</label>
-                <input class="inp-style" type="text" name="" placeholder="New York, United States">
+            <div class="flying-from-to">
+                <div class="input-group">
+                    <label for="">Flying From</label>
+                    <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+                </div>
+
+                <div class="input-group">
+                    <label for="">Flying To</label>
+                    <input class="inp-style" type="text" name="" placeholder="New York, United States">
+                </div>
             </div>
             <div class="inputs">
                 <div class="input-group">
@@ -108,29 +109,7 @@
                         </div>
                     </div>
                 </div>
-                <button id="bookNow" class="btn-style" data-bs-toggle="modal" data-bs-target="#exampleModal">Book Now</button>
-
-                <!-- Popup Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-check-circle icon"></i> Congratulations! You have booked your ticket.</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Get ready for the fly. Wishing you all the best</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
+                <button id="bookNow" class="btn-style">Book Now</button>
             </form>
         </div>
 
@@ -143,11 +122,6 @@
         </div>
         </section>
 
-
-        <!-- Bootstrap js cdn -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
-        </script>
 
         <!-- Custom Javascript -->
         <script>
@@ -190,6 +164,23 @@
                 const ticketInput = parseInt(ticketCount.value);
                 return ticketInput;
             }
+
+
+            // Form validation
+            document.getElementById('bookNow').addEventListener('click', function () {
+                const ticketFirst = document.getElementById('firstClassInput').value;
+                const firstTicketCount = parseInt(ticketFirst);
+
+                const ticketeconomy = document.getElementById('economyClassInput').value;
+                const economyTicketCount = parseInt(ticketeconomy);
+
+                if (firstTicketCount > 0 || economyTicketCount > 0) {
+                    alert('Congratulations! You have booked your ticket. Wish you all the best!');
+                } else {
+                    alert('You have to book minimum 1 ticket to fly.')
+                }
+            })
+
 
         </script>
 

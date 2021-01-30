@@ -91,7 +91,8 @@ nav ul li a:hover, a.active{
     border-radius: 4px;
     margin: 10px 0;
 }
-.booking-form .inputs{
+.booking-form .inputs,
+.booking-form .flying-from-to{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
@@ -138,7 +139,5 @@ nav ul li a:hover, a.active{
     cursor: pointer;
 }
 
-.icon {
-    color: green;
-}
+
 
